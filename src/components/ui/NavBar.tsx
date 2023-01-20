@@ -1,6 +1,10 @@
+import Image from "next/image"
+import { useTheme, Text, Spacer } from "@nextui-org/react"
 
 
 export const NavBar = () => {
+
+  const {theme} = useTheme()
   return (
     <div style={{
       display: 'flex',
@@ -9,9 +13,22 @@ export const NavBar = () => {
       alignItems: 'center',
       justifyContent: 'start',
       padding: '0px 20px',
-      backgroundColor: 'red'
+      backgroundColor: theme?.colors.gray200.value
     }}>
-      <span>NavBar</span>
+
+      <Image
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+        alt='Pikachu'
+        width={70}
+        height={70}
+      />
+      <Text color="white" h2>P</Text>
+      <Text color="white" h3>okemon</Text>
+
+      <Spacer css={{
+        flex: 1
+      }}/>
+      <Text color="white" >Favorites</Text>
     </div>
   )
 }
