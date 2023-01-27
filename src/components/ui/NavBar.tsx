@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { useTheme, Text, Spacer } from "@nextui-org/react"
+import Link from "next/link"
+import { useTheme, Text, Spacer} from "@nextui-org/react"
 
 
 export const NavBar = () => {
@@ -14,14 +15,20 @@ export const NavBar = () => {
       justifyContent: 'start',
       padding: '0px 20px',
       backgroundColor: theme?.colors.gray200.value
+      
     }}>
 
-      <Image
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-        alt='Pikachu'
-        width={70}
-        height={70}
-      />
+      <Link href='/'>
+        <Image
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+          alt='Pikachu'
+          width={70}
+          height={70}
+                
+        />
+      </Link>
+      
+      
       <Text color="white" h2>P</Text>
       <Text color="white" h3>okemon</Text>
 
