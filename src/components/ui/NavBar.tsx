@@ -1,6 +1,8 @@
 import Image from "next/image"
-import Link from "next/link"
-import { useTheme, Text, Spacer} from "@nextui-org/react"
+import NextLink from "next/link"
+
+import { useTheme, Text, Spacer, Link} from "@nextui-org/react"
+
 
 
 export const NavBar = () => {
@@ -18,24 +20,31 @@ export const NavBar = () => {
       
     }}>
 
-      <Link href='/'>
-        <Image
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-          alt='Pikachu'
-          width={70}
-          height={70}
-                
-        />
+      <Link href='/' as={NextLink}>
+          <Image
+            // src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+            src='https://www.svgrepo.com/show/276264/pokeball-pokemon.svg'
+            alt='Pikachu'
+            width={50}
+            height={50}
+                  
+          />
+      
+      
+        
+        
+          <Text color="yellow" css={{ marginLeft: "10px" }} h2>P</Text>
+          <Text color="yellow" h3>okemon</Text>
+        
       </Link>
-      
-      
-      <Text color="white" h2>P</Text>
-      <Text color="white" h3>okemon</Text>
-
       <Spacer css={{
         flex: 1
       }}/>
-      <Text color="white" >Favorites</Text>
+
+      <Link href={'/favorites'} as={NextLink}>
+        <Text color="yellow" >Favorites</Text>
+      </Link>
+      
     </div>
   )
 }
