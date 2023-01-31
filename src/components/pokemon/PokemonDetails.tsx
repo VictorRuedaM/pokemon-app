@@ -1,5 +1,6 @@
 import { Grid, Card, Button, Container, Text, Image } from "@nextui-org/react";
 import React, { FC } from "react";
+import { localFavorites } from "@/utils";
 import { Pokemon } from '../../interfaces/pokemonDetails';
 
 
@@ -8,6 +9,12 @@ interface Props {
 }
 
 export const PokemonDetails: FC<Props> = ({pokemon}) => {
+
+  const onToggleFavorite = () => {
+
+    localFavorites.toggleFavorite(pokemon.id);
+  }
+
   return (
     <Grid.Container css={{ marginTop: "5px" }} gap={2}>
       <Grid xs={12} sm={4}>
@@ -35,7 +42,7 @@ export const PokemonDetails: FC<Props> = ({pokemon}) => {
               {pokemon.name}
             </Text>
 
-            <Button color="gradient" ghost>
+            <Button color="gradient" ghost onPress={onToggleFavorite}>
               Save to favorites
             </Button>
           </Card.Header>

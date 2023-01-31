@@ -8,17 +8,25 @@ import { Button, Card, Container, Grid, Image, Text } from '@nextui-org/react';
 import { Sprites } from '../../interfaces/pokemonDetails';
 import { type } from 'os';
 import { PokemonDetails } from '@/components/pokemon';
+import { transform } from 'typescript';
 
 interface Props {
   pokemon: Pokemon
   type: Species
 }
 
+
+
 const PokemonPage: NextPage<Props> = ({pokemon}) => {
 
-  console.log(pokemon.types)
+  const capitalize = (param: string): string => {
+    return param[0].toLocaleUpperCase() + param.substring(1);
+    
+  }
+
+    
   return (
-    <MainLayout title='Any pokemon'>
+    <MainLayout title={capitalize(pokemon.name)} >
 
       <PokemonDetails pokemon={pokemon}/>
       
