@@ -1,5 +1,5 @@
-import { Grid, Card, Button, Container, Text, Image } from "@nextui-org/react";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import { Grid, Card, Button, Container, Text, Image, Spacer } from "@nextui-org/react";
 import { localFavorites } from "@/utils";
 import { Pokemon } from '../../interfaces/pokemonDetails';
 
@@ -10,9 +10,12 @@ interface Props {
 
 export const PokemonDetails: FC<Props> = ({pokemon}) => {
 
+  const [existFavorites, setExistFavorites] = useState(localFavorites.existPokemonFavorites(pokemon.id));
+
   const onToggleFavorite = () => {
 
     localFavorites.toggleFavorite(pokemon.id);
+    setExistFavorites(!existFavorites);
   }
 
   return (
@@ -42,9 +45,14 @@ export const PokemonDetails: FC<Props> = ({pokemon}) => {
               {pokemon.name}
             </Text>
 
-            <Button color="gradient" ghost onPress={onToggleFavorite}>
-              Save to favorites
+            <Button 
+              size="sm"
+              color="gradient"
+              ghost={!existFavorites}
+              onPress={onToggleFavorite}>
+              {existFavorites ? 'Remove favorites' : 'Save to favorites'}
             </Button>
+           
           </Card.Header>
 
           <Card.Body>

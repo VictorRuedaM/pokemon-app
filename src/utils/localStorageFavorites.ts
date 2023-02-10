@@ -17,6 +17,23 @@ function toggleFavorite(id: number) {
 
 }
 
+
+const existPokemonFavorites = (id: number): Boolean => {
+
+  if(typeof window === 'undefined') return false;
+  const favorites: number[] = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+  return favorites.includes(id)
+}
+
+const pokemons = (): number[] => {
+
+  return JSON.parse(localStorage.getItem('favorites') || '[]');
+
+}
+
 export default {
-  toggleFavorite
+  toggleFavorite,
+  existPokemonFavorites,
+  pokemons,
 }
